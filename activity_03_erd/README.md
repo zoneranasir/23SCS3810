@@ -26,3 +26,14 @@ Draw an E/R Diagram using crow's foot notation to represent:​
 * each section can have many students and each student can enroll in many different course sections​; 
 * a course section is taught by only one instructor​;
 * a instructor can teach many course sections. 
+
+# Practice #4
+
+Draw an E/R Diagram using crow's foot notation to represent:​
+
+* a company sells different types of products​;
+* each product has an unique number, a description, and a sell price​; 
+* customers can buy products by placing orders​; 
+* an order has an unique number, a shipping address, and a customer name​; 
+* an order is associated with one or more items, each of them based on a specific product and the quantity bought by the customer​; 
+* items in an order are uniquely identified by a sequential number. 
