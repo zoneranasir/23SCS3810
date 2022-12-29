@@ -1,0 +1,16 @@
+erdiagram shippings
+notation=crowsfoot
+
+entity Shippings {
+    order_number key 
+    address
+}
+
+weak entity Items { 
+    seq_number partial-key
+    description 
+}
+
+weak relationship has { 
+    Shippings[1] -> Items[0..N]
+}

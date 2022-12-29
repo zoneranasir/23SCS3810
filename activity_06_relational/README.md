@@ -69,3 +69,54 @@ relationship applies_for {
 ```
 
 ![pic3.png](pics/pic3.png)
+
+## Practice #4
+
+```
+erdiagram buildings
+notation=crowsfoot
+
+entity Employees {
+    ssn key 
+    name 
+}
+
+entity Projects { 
+    number key 
+    title 
+}
+
+relationship works_in {
+    Employees[0..N] -> Projects[0..N]
+    hours
+}
+```
+
+![pic4.png](pics/pic4.png)
+
+![pic5.png](pics/pic5.png)
+
+## Practice #5
+
+```
+erdiagram shippings
+notation=crowsfoot
+
+entity Shippings {
+    order_number key 
+    address
+}
+
+weak entity Items { 
+    seq_number partial-key
+    description 
+}
+
+weak relationship has { 
+    Shippings[1] -> Items[0..N]
+}
+```
+
+![pic6.png](pics/pic6.png)
+
+

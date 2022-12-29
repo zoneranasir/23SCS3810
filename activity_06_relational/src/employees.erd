@@ -1,0 +1,17 @@
+erdiagram buildings
+notation=crowsfoot
+
+entity Employees {
+    ssn key 
+    name 
+}
+
+entity Projects { 
+    number key 
+    title 
+}
+
+relationship works_in {
+    Employees[0..N] -> Projects[0..N]
+    hours
+}
