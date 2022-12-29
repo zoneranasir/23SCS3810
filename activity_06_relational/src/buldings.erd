@@ -1,0 +1,16 @@
+erdiagram buildings
+notation=crowsfoot
+
+entity Buildings {
+    name key
+    address
+}
+
+weak entity Rooms { 
+    floor partial-key
+    number partial-key
+}
+
+weak relationship has {
+    Buildings[1] -> Rooms[0..N]
+}

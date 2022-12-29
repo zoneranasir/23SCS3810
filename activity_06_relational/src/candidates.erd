@@ -1,0 +1,17 @@
+erdiagram candidates
+notation=crowsfoot
+
+entity Candidates {
+    ssn key
+    name 
+}
+
+entity JobPositions { 
+    number key 
+    title 
+    department 
+}
+
+relationship applies_for {
+    Candidates[0..N] -> JobPositions[0..N]
+}

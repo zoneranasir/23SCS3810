@@ -1,0 +1,16 @@
+erdiagram courses
+notation=crowsfoot
+
+entity Students {
+    id key
+    name 
+}
+
+entity Courses { 
+    number key
+    title
+}
+
+relationship enrolls_in {
+    Students[0..N] -> Courses[0..N]
+}
