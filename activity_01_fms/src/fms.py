@@ -4,7 +4,6 @@ Instructor: Thyago Mota
 Description: A simple FMS for employees
 """
 
-
 class Entity: 
     """
     models an entity's interface with a key
@@ -101,13 +100,34 @@ class EmployeeCRUD(CRUD):
             * if the entity is found, return it
             * else, return None
         """
-        pass
+        employee = None
+        try: 
+            file = open(self.file_name, "r")
+            for line in file: 
+                line = line.strip()
+                cols = line.split(",")
+                id = int(cols[0])
+                print("id:" + str(id))
+                print("key: " + str(key))
+                if id == key:
+                    name = cols[1]
+                    department = cols[2]
+                    employee = Employee(id, name, department)
+                    break
+        finally:
+            file.close()
+        return employee
 
     def update(self, entity) -> bool: 
         """
         TODO #2: delete the entity (using the key) then re-create it
         """
-        pass
+        key = entity.get_key()
+        if not self.delete(key): 
+            return False
+        if not self.create(entity):
+            return False
+        return True
 
     def delete(self, key) -> bool: 
         """
@@ -117,7 +137,23 @@ class EmployeeCRUD(CRUD):
             * re-open the (storage) file for writing
             * copy all of the entities, except the one that should be deleted
         """
-        pass
+        result = False
+        try: 
+            file = open(self.file_name, "r")
+            lines = file.readlines()
+            file.close()
+            file = open(self.file_name, "w")
+            for line in lines: 
+                line = line.strip()
+                cols = line.split(",")
+                id = int(cols[0])
+                if id == key:
+                    continue
+                file.write(line + "\n")
+            result = True
+        finally: 
+            file.close()
+        return result
                 
 def menu(): 
     print("1. Create")
