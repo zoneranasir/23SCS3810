@@ -90,25 +90,54 @@ class DB:
         """
         TODO #1: list all courses
         """
-        pass
+        courses = []
+        with open(os.path.join("db", "courses.csv"), "r") as file:
+            for line in file:
+                line = line.strip()
+                prefix, code, description = line.split(",")
+                course = Course(prefix, int(code), description)
+                courses.append(course)
+        return courses
 
     def list_sections(course) -> list: 
         """
         TODO #2: list all sections of a course
         """
-        pass
+        sections = []
+        with open(os.path.join("db", course.prefix + str(course.code), "sections.csv"), "r") as file:
+            for line in file:
+                line = line.strip()
+                year, semester, number, instructor = line.split(",")
+                section = Section(course, int(year), semester, number, instructor)
+                sections.append(section)
+        return sections
 
     def list_students(section) -> list:
         """
         TODO #3: list all students enrolled in a section
         """
-        pass
+        students = []
+        with open(os.path.join("db", section.course.prefix + str(section.course.code), str(section.year) + section.semester + section.number, "students.csv"), "r") as file:
+            for line in file:
+                line = line.strip()
+                id, name = line.split(",")
+                student = Student(int(id), name)
+                students.append(student)
+        return students
 
     def list_schedule(id, year, semester) -> list:
         """
         TODO #4: list a student's schedule
         """
-        pass
+        schedule = []
+        for course in DB.list_courses():
+            for section in DB.list_sections(course):
+                if section.year != year or section.semester != semester:
+                    continue
+                for student in DB.list_students(section):
+                    if student.id == id:
+                        schedule.append(section)
+        return schedule
 
 def menu(): 
     print("1. List all courses")
