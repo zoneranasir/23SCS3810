@@ -3,7 +3,7 @@
 Design an E/R Model based on the following data requirements: 
 
 * there are sensors of different types, depending on their application (consumer/home, smart infrastructure, security/surveillance, healthcare, environmental, etc.)
-* a sensor cannot only be of one type
+* a sensor can only be of one type
 * a sensor is built by a manufacturer 
 * a sensor can have the ability to measure one or more things (eg, pressure, temperature, etc.)
 * for each thing measured by a sensor, there can be multiple readings
