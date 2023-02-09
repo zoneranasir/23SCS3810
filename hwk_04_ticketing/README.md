@@ -29,7 +29,7 @@ You should submit a single text file named **ticketing.txt** with your design. U
 
 +1 explain how you would use relational algebra to create a relation with all the sector prices for "The Entity Sets Ballet" on 02/20/23 starting at 8pm.
 
-To make it easier you can break your explanation into two parts. For example: 
+To make it easier you can break down your explanation into two parts. For example: 
 
 1) equijoin between X and Y using C1 and C2 and ...
 
