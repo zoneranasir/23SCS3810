@@ -22,6 +22,7 @@ You should submit a single text file named **ticketing.txt** with your design. U
 # Grading
 
 -1 every 2 missing relations
+
 -1 every 3 missing/mistake attribute in relation, including domain or key
 
 # Bonus Points
@@ -31,5 +32,6 @@ You should submit a single text file named **ticketing.txt** with your design. U
 To make it easier you can break your explanation into two parts. For example: 
 
 1) equijoin between X and Y using C1 and C2 and ...
+
 2) natural join between the above relation and Z 
 
