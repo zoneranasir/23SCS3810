@@ -17,6 +17,7 @@ In this project you are asked to design and implement a database for a fictional
 At the end of this project, you will use your database to answer a few queries using SQL. 
 
 ![pic1.png](pics/pic1.png)
+
 The "In-N-Out Store" logo.
 
 # Part A: Database Design
