@@ -74,3 +74,7 @@ Add the following lines of code right-after the connection but before the call t
 ```
 
 Run your code again. You should be able to see the rows from table **Employees**.
+
+# Final Note
+
+The example here exposes the database password in the code which is bad practice that you should avoid. On the next activity we will discuss alternatives to properly secure your password in a program that access a database. 
