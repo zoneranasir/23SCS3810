@@ -90,3 +90,46 @@ docker exec -it postgres psql -d hr -U hr_admin -W
 ```
 
 There is much more about user access control. For example, you can grant access to a user on different object types, not only on a table but to a whole database, for example. There are also many other grant privilege levels other than the ones described here.
+
+# Further Practice
+
+Create another database called **hotels** using the SQL script below. 
+
+```
+CREATE DATABASE hotels;
+
+\c hotels
+
+CREATE TABLE hotels (
+    code SERIAL PRIMARY KEY, 
+    name VARCHAR(50) NOT NULL, 
+    city VARCHAR(50) NOT NULL, 
+    state CHAR(2) NOT NULL
+);
+
+INSERT INTO hotels (name, city, state) VALUES 
+    ('Le Boutique', 'New Orleans', 'LA'),
+    ('Supreme', 'San Francisco', 'CA');
+```
+
+Then create the following user with the permissions below. 
+
+```
+CREATE USER "hotel_manager" PASSWORD '135791';
+GRANT ALL ON TABLE hotels TO "hotel_manager";
+GRANT ALL ON SEQUENCE hotels_code_seq TO "hotel_manager";
+```
+
+Check if you are able to login on Postgres using the user **hotel_manager**. 
+
+```
+docker exec -it postgres psql -d hotels -U hotel_manager -W
+```
+
+Once you successfully logged in with user **hotel_manager**, check access to the table by inserting the following row: 
+
+```
+INSERT INTO hotels (name, city, state) VALUES 
+    ('Broadmoor', 'Colorado Springs', 'CO');
+```
+
