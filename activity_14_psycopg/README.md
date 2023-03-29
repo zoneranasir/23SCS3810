@@ -14,7 +14,7 @@ cd build
 source bin/activate
 ```
 
-Note: on Windows you activate using: 
+Note: depending on your version of Windows you may need to activate your virtualenv using: 
 
 ```
 Scripts\activate.bat
