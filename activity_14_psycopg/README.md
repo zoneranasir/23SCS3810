@@ -17,6 +17,12 @@ source bin/activate
 Note: depending on your version of Windows you may need to activate your virtualenv using: 
 
 ```
+bin\activate.bat
+```
+
+OR 
+
+```
 Scripts\activate.bat
 ```
 
