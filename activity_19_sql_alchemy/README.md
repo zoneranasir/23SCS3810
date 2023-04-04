@@ -55,7 +55,7 @@ if conn:
     conn.close()
 ```
 
-If that works: GREAT! Let's continue. Usually we write each class on its own file, but for simplification let's have everything in the same script. 
+If that worked: GREAT! Let's continue. Usually we write each class on its own file, but for simplification let's have everything in the same script. 
 
 ```
 import configparser as cp
