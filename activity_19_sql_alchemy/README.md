@@ -3,7 +3,7 @@
 This activity will use the **music** database created in the previous activity. Since you will be connecting to the database via SQL Alchemy, you need to setup the following user: 
 
 ```
-CREATE USER music_admin WITH PASSWORD '135791'; 
+CREATE USER music_manager WITH PASSWORD '135791'; 
 GRANT ALL PRIVILEGES ON TABLE albums TO music_admin; 
 GRANT ALL PRIVILEGES ON TABLE tracks TO music_admin; 
 ```
