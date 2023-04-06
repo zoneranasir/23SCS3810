@@ -82,3 +82,14 @@ INNER JOIN Products C
 ON B.product_id = C.id
 GROUP BY (year, month)
 ORDER BY year, month;
+
+CREATE VIEW OrdersTotalByYear AS
+SELECT EXTRACT(YEAR FROM date) AS year,
+SUM(qtt * price) AS total
+FROM Orders A 
+INNER JOIN Items B 
+ON A.number = B.order_number
+INNER JOIN Products C 
+ON B.product_id = C.id
+GROUP BY (year)
+ORDER BY year;
