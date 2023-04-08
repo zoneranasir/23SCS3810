@@ -103,3 +103,89 @@ if engine:
         for track in album.tracks:
             print("\t", track.num, track.name)
 ```
+
+# Further Practice
+
+Complete the to-dos in the SQL script below that implements a postgres database from the summer camp model described previously. Your script must be able to run on postgres. Make sure to apply nullable restrictions on attributes when appropriate. You must define primary on all tables that you create. Foreign keys should also be defined whenever relationships are implied from the data model. 
+
+```
+CREATE DATABASE camp; 
+
+\c camp
+
+CREATE TABLE staff (
+    email VARCHAR PRIMARY KEY, 
+    name VARCHAR NOT NULL, 
+    nickname VARCHAR, 
+    role VARCHAR
+);
+
+INSERT INTO staff VALUES   
+    ('aqua@man.com', 'Aqua Man', 'aqua', 'counselor'), 
+    ('cat@woman.com', 'Cat Woman', 'catty', 'counselor'), 
+    ('green@lantern.com', 'Green Lantern', 'greenny', 'security'), 
+    ('drdestiny@gmail.com', 'Dr. Destiny', null, 'manager'), 
+    ('wolverine@gmail.com', 'James Howlett', 'wolverine', 'cook');
+
+-- TODO: create table cabins
+
+
+-- TODO: populate table cabins with: 'greenland' 
+(capacity of 15, 'aquaman' is the leader) and 'appalachian' 
+(capacity of 23, 'catwoman' is the leader)
+
+
+-- TODO: update campers by adding an attribute and 
+a foreign key constraint to represent the relationship between campers and cabins
+CREATE TABLE campers (
+    id INT PRIMARY KEY, 
+    name VARCHAR NOT NULL, 
+    dob DATE NOT NULL, 
+    gender VARCHAR
+);
+
+INSERT INTO campers VALUES 
+    (1, 'Achiles', '2011-01-01', 'male', 'greenland'), 
+    (2, 'Apollo', '2011-02-01', 'male', 'greenland'),
+    (3, 'Aphrodite', '2011-03-01', 'female', 'appalachian'), 
+    (4, 'Isis', '2011-04-01', NULL, 'appalachian');
+
+CREATE TABLE programs (
+    name VARCHAR PRIMARY KEY, 
+    descr VARCHAR NOT NULL, 
+    price DECIMAL(10,2)
+);
+
+INSERT INTO programs VALUES 
+    ('homestead', 'Our youngest adventurers learn how to make new friends, 
+discover self-confidence, and learn independence', 5000), 
+    ('outpost', 'Campers experience rewarding trips in the backcountry with the 
+guidance and support of counselors', 5500);
+
+-- TODO: create a table named 'participates' to represent the relationship 
+between campers and programs
+
+
+-- TODO: populate table 'participates' making sure that all campers are 
+participating in the 'homestead' program of 2022
+
+CREATE TABLE guardians (
+    email VARCHAR PRIMARY KEY, 
+    name VARCHAR NOT NULL
+);
+
+INSERT INTO guardians VALUES 
+    ('peleus@palace.com', 'Peleus'), 
+    ('thetis@palace.com', 'Thetis'),
+    ('leto@gmail.com', 'Leto'), 
+    ('dione@god.com', 'Dione'), 
+    ('sky@god.com', 'Sky');
+
+-- TODO: create a table to represent the relationship between campers and guardians
+
+-- TODO: populate the table making sure that:
+-- Peleus and Thetis are both guardians of Achiles
+-- Leto is the solo guardian of Apollo
+-- Dione is the solo guardian of Aphrodite
+-- Sky is the solo guardian of Isis
+```
