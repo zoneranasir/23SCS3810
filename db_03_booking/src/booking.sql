@@ -70,14 +70,6 @@ INSERT INTO Reservations (abbr, room, date, period, "user") VALUES
     ('AES', 220, '2023-06-23', 'E', 2), 
     ('JSS', 230, '2023-06-23', 'F', 3);
 
-PREPARE QueryReservationExists AS 
-    SELECT * FROM Reservations 
-    WHERE abbr = $1 AND room = $2 AND date = $3 AND period = $4;
-
-PREPARE NewReservation as 
-    INSERT INTO Reservations (abbr, room, date, period, "user") VALUES
-    ($1, $2, $3, $4, $5);
-
 CREATE USER booking PASSWORD '135791';
 GRANT ALL ON TABLE Users TO booking;
 GRANT ALL ON TABLE Buildings TO booking;
