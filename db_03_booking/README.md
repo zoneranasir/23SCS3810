@@ -85,7 +85,9 @@ booking.zip
 
 # Rubric
 
+```
 +15 ReservationsView
 +20 List Reservations
 +35 New Reservation
 +30 Delete Reservation
+```
