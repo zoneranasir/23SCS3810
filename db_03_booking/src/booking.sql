@@ -1,6 +1,6 @@
 -- CS3810: Principles of Database Systems
 -- Instructor: Thyago Mota
--- Student(s): 
+-- Student(s): Zonera Nasir
 -- Description: booking database
 
 DROP DATABASE booking;
@@ -79,13 +79,21 @@ GRANT ALL ON TABLE Reservations TO booking;
 GRANT ALL ON SEQUENCE reservations_code_seq TO booking;
 GRANT ALL ON SEQUENCE users_user_seq TO booking;
 
--- TODO: create a view called ReservationsView to retrieve all reservation information in chronological order similar to the one below
---  code |    date    | period |  start   |   end    |  room   |     name      
--- ------+------------+--------+----------+----------+---------+---------------
---     4 | 2023-06-23 | F      | 16:00:00 | 18:00:00 | JSS-230 | James Brandy
---     3 | 2023-06-23 | E      | 14:00:00 | 16:00:00 | AES-220 | Morbid Mojito
---     2 | 2023-06-12 | D      | 12:00:00 | 14:00:00 | AES-210 | Sam Mai Tai
---     1 | 2023-05-15 | C      | 10:00:00 | 12:00:00 | AES-210 | Sam Mai Tai
+TODO: create a view called ReservationsView to retrieve all reservation information in chronological order similar to the one below
+ code |    date    | period |  start   |   end    |  room   |     name      
+------+------------+--------+----------+----------+---------+---------------
+    4 | 2023-06-23 | F      | 16:00:00 | 18:00:00 | JSS-230 | James Brandy
+    3 | 2023-06-23 | E      | 14:00:00 | 16:00:00 | AES-220 | Morbid Mojito
+    2 | 2023-06-12 | D      | 12:00:00 | 14:00:00 | AES-210 | Sam Mai Tai
+    1 | 2023-05-15 | C      | 10:00:00 | 12:00:00 | AES-210 | Sam Mai Tai
 
--- once your view is created and working, run the following line
+CREATE VIEW ReservationsView AS
+SELECT r.code, r.date, r.period, p.start, p."end", CONCAT(r.abbr, '-', r.room) AS room, u.name
+FROM Reservations r
+JOIN Periods p ON r.period = p.period
+JOIN Users u ON r."user" = u."user"
+ORDER BY r.date ASC, p.start ASC;
+
+
+once your view is created and working, run the following line
 GRANT ALL ON TABLE ReservationsView TO booking;
