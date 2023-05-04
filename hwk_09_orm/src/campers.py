@@ -1,7 +1,7 @@
 """
 CS3810: Principles of Database Systems
 Instructor: Thyago Mota
-Student: 
+Student: Zonera Nasir 
 Description: ORM script to show campers in a given program
 """
 
@@ -18,13 +18,13 @@ This class represents a camper entity
 '''
 class Camper(Base): 
     # TODO #1 complete the mapping of class Camper and table campers
-    '''
-    __tablename__ = ...
-    id     = ...
-    name   = ...
-    dob    = ...
-    gender = ...
-    '''
+
+    __tablename__ = 'campers'
+    id     = Column(Integer, primary_key=True)
+    name   = Column(String(50), nullable=False)
+    dob    = Column(Date, nullable=False)
+    gender = Column(String(10))
+    cabin = Column(String(50), ForeignKey('cabins.name'))
     
     # programs will allow the retrieval of all programs that a camper is in via the intermediate table "participates"
     programs = relationship("Program", secondary="participates")
@@ -45,6 +45,9 @@ class Participate(Base):
     program = Column(..., ForeignKey(...), primary_key=True) 
     camper = Column(..., ForeignKey(...), primary_key=True)
     '''
+    __tablename__ = "participates"
+    camper = Column(Integer, ForeignKey('campers.id'), primary_key=True)
+    program = Column(String(50), ForeignKey('programs.name'), primary_key=True)
 
 '''
 This class represents a program entity
@@ -57,6 +60,10 @@ class Program(Base):
     descr = Column(...)
     price = Column(...)
     '''
+    __tablename__ = "programs"
+    name = Column(String(50), primary_key=True)
+    descr = Column(String(200), nullable=False)
+    price = Column(Double(10, 2))
 
     # campers will allow the retrieval of all campers that are enrolled in a program via the intermediate table "participates"
     campers = relationship("Camper", secondary="participates", back_populates="programs")
@@ -86,9 +93,25 @@ if engine:
     '''
     name = ... 
     '''
+    name = input("Enter the name of the program: ")
 
     # retrieves program info without any SQL (wow!)
     program = session.get(Program, name)
 
     # TODO #5 check if the program exists and if yes show the program info including all campers enrolled in the program 
-    
+    if program:
+        print("Program info:")
+        print("Name:", program.name)
+        print("Description:", program.descr)
+        print("Price:", program.price)
+        
+        # Get the list of campers enrolled in the program
+        campers = program.campers
+        if campers:
+            print("Campers enrolled:")
+            for camper in campers:
+                print(camper.name)
+        else:
+            print("No campers enrolled in this program.")
+    else:
+        print("Program does not exist.")

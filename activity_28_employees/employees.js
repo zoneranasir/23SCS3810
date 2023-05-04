@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 use employees
 
 db.employees.insertMany([
@@ -6,6 +7,10 @@ db.employees.insertMany([
 ```
     db.employees.insertMany([
 >>>>>>> f0fd36a (Committing changes to employees.js)
+=======
+```
+    db.employees.insertMany([
+>>>>>>> merge
     {
         name: 'John', 
         department: 'sales', 
@@ -62,6 +67,7 @@ db.employees.insertMany([
         department: 'finances', 
         projects: ['conix', 'filemenup', 'scrosnes', 'specima', 'bluffee' ]
     }])
+<<<<<<< HEAD
 <<<<<<< HEAD
 
 // number of employees per department
@@ -226,3 +232,6 @@ db.employees.aggregate(
 =======
 ```
 >>>>>>> f0fd36a (Committing changes to employees.js)
+=======
+```
+>>>>>>> merge

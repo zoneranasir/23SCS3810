@@ -72,7 +72,7 @@ docker exec -it postgres psql -d hr -U hr -W
 On psql tool, let's try to add employee name Thyago with a 200K salary since he is such a great professor!
 
 ```
-INSERT INTO Employees VALUES (3, 'Thyago', 200000);
+INSERT INTO Employees VALUES (4, 'Thyago', 200000);
 ```
 
 Unfortunately, it should NOT work! I guess my planned weekend at the Broadmoor Hotel will have to be canceled. 

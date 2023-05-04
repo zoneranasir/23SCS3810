@@ -18,6 +18,9 @@ db.students.insert({"name": "Jane", "year": 2022, "major": "Chemistry"})
 print("list all of the documents in students:")
 db.students.find()
 
+//print("list all of the documents in employees:")
+db.employees.find()
+
 // a simple select
 print("a simple select:")
 db.students.find({"year": 2022})

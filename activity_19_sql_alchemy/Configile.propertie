@@ -1,0 +1,6 @@
+[db]
+host=localhost 
+port=5432
+dbname=music
+user=music_admin
+password=135791
