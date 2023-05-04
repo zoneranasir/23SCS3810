@@ -1,6 +1,11 @@
+<<<<<<< HEAD
 use employees
 
 db.employees.insertMany([
+=======
+```
+    db.employees.insertMany([
+>>>>>>> f0fd36a (Committing changes to employees.js)
     {
         name: 'John', 
         department: 'sales', 
@@ -57,6 +62,7 @@ db.employees.insertMany([
         department: 'finances', 
         projects: ['conix', 'filemenup', 'scrosnes', 'specima', 'bluffee' ]
     }])
+<<<<<<< HEAD
 
 // number of employees per department
 // hint: use the $group and $sum pipeline operators 
@@ -217,3 +223,6 @@ db.employees.aggregate(
         }
     ]
 )
+=======
+```
+>>>>>>> f0fd36a (Committing changes to employees.js)
